@@ -1,0 +1,12 @@
+name: nosql
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+    - redis==7.4.0
+    - ipykernel
+    - ipython
+    - nbconvert
+    - jupyter_client
