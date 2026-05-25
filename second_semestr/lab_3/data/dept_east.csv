@@ -1,0 +1,6 @@
+id,amount,category,date
+e-001,500.00,food,2025-09-01
+e-002,abc,transport,2025-09-02
+e-003,-100,salary,2025-09-03
+e-004,990.00,rent,2025-09-04
+e-005,,food,2025-09-05

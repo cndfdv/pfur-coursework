@@ -1,0 +1,5 @@
+[
+  {"id": "s-001", "amount": 850.0, "category": "food", "date": "2025-09-01"},
+  {"id": "s-002", "amount": 3000.0, "category": "salary", "date": "2025-09-02"},
+  {"id": "s-003", "amount": 410.5, "category": "transport", "date": "2025-09-03"}
+]
