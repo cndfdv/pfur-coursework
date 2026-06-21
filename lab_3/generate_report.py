@@ -1,271 +1,129 @@
+"""Отчёт по лабораторной работе № 3 (вариант 13).
+Запуск: python generate_report.py
+Создаёт report_lab3.docx и report_lab3.pdf по образцу отчётов к работам №1–2.
+"""
 from __future__ import annotations
 
-import json
-import textwrap
+import sys
 from pathlib import Path
 
-from docx import Document
-from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.shared import Cm, Emu, Pt
-from PIL import Image, ImageDraw, ImageFont
-
-
 FOLDER = Path(__file__).resolve().parent
-FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-BOLD_FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-MONO_FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
+sys.path.insert(0, str(FOLDER.parent))
 
+from report_utils import bold, build_report, figure, heading, page_break, para, table
 
-LAB_NUMBER = 3
-SPEC = {'folder': 'lab_3', 'title': 'Сети Элмана, Хопфилда и Хэмминга', 'variant': '13', 'goal': 'исследование свойств сетей Элмана, Хопфилда и Хэмминга, а также их применение для распознавания динамических и статических образов.', 'stages': ['Построить и обучить сеть Элмана для распознавания динамического образа.', 'Построить сеть Хопфилда для хранения и восстановления статических образов.', 'Реализовать сеть Хэмминга для классификации зашумленных образов.'], 'tables': [('Таблица 1 — Параметры варианта', ['Параметр', 'Значение'], [['g(k)', 'sin(2k^2 - 6k + 3), k in [-0.02, 2.36]'], ['R', '[2, 5, 6]'], ['Образы', 'цифры 0, 1, 4 размером 12x10'], ['Устройство при проверке', 'cuda']]), ('Таблица 2 — Результаты', ['Этап', 'Результат'], [['Элман, обучение', 'loss = 0.295058, правильно 751/821'], ['Элман, измененное R=[2,4,6]', 'правильно 710/780'], ['Хопфилд', 'восстановлены цифры 0, 1, 4'], ['Хэмминг', 'выбраны цифры 0, 1, 4']])], 'images': [('hopfield_results.png', 'Рис. 1 — Входные и восстановленные образы сети Хопфилда')], 'conclusion': 'Сеть Элмана распознает участки последовательности, соответствующие заданному динамическому образу. Сети Хопфилда и Хэмминга корректно распознают выбранные статические образы даже после внесения шума 20% и 30%.'}
+GOAL = (
+    "исследование свойств сетей Хопфилда, Хэмминга и Элмана, алгоритмов их обучения, "
+    "а также их применение в задачах распознавания статических и динамических образов."
+)
 
+STAGES = [
+    "Построить и обучить сеть Элмана для распознавания динамического образа, проверить качество распознавания.",
+    "Построить сеть Хопфилда для хранения и восстановления статических образов (цифр), проверить работу на зашумлённых образах.",
+    "Реализовать сеть Хэмминга для классификации статических образов и проверить её на зашумлённых данных.",
+]
 
-def add_centered(doc: Document, text: str, bold: bool = False) -> None:
-    p = doc.add_paragraph()
-    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r = p.add_run(text)
-    r.font.size = Pt(14)
-    r.bold = bold
+EQUIPMENT = "Python 3.x, Jupyter Notebook, библиотеки PyTorch, NumPy и Matplotlib."
 
+BLOCKS = [
+    # --- Этап 1 ---
+    heading("Этап 1. Сеть Элмана для распознавания динамического образа"),
+    para("Обучающая последовательность составлена из основного сигнала p1(k) = sin(4πk) с целевым "
+         "выходом t1 = −1 на отрезке k ∈ [0, 1] и распознаваемого сигнала p2(k) = g(k) с целевым "
+         "выходом t2 = 1. Согласно варианту 13 распознаваемый сигнал g(k) = sin(2k² − 6k + 3), "
+         "k ∈ [−0.02, 2.36]. Шаг дискретизации обоих сигналов h = 0.025."),
+    para("Длительность участков основного сигнала задаётся набором R = {r1, r2, r3} = {2, 5, 6} "
+         "(вариант 13). Входная и целевая последовательности формируются по правилу "
+         "P = [repmat(p1, r1), p2, repmat(p1, r2), p2, repmat(p1, r3), p2], аналогично для T. "
+         "Контрольное и тестовое подмножества из обучающего множества не выделяются."),
+    table("Таблица 1 — Параметры варианта 13", ["Параметр", "Значение"], [
+        ["Распознаваемый сигнал g(k)", "sin(2k² − 6k + 3), k ∈ [−0.02, 2.36]"],
+        ["Длительности R = {r1, r2, r3}", "{2, 5, 6}"],
+        ["Эталонные цифры (этапы 2, 3)", "0, 1, 4 (размер 12×10)"],
+    ]),
+    table("Таблица 2 — Структура сети Элмана", ["Параметр", "Значение"], [
+        ["Тип сети", "рекуррентная сеть Элмана (nn.RNN)"],
+        ["Архитектура", "[1] → [8, tanh] → [1, tanh]"],
+        ["Нейронов в скрытом слое", "8"],
+        ["Функция активации", "tanh (скрытый и выходной слой)"],
+        ["Число эпох", "1000"],
+        ["Функция потерь / оптимизатор", "MSE / Adam"],
+    ]),
+    para("После обучения выход сети рассчитывается для всей обучающей последовательности и "
+         "сравнивается с эталоном. Значения преобразуются по правилу o = 1 при a > 0 и o = −1 при a < 0."),
+    figure("Рис. 1 — Сеть Элмана: эталонная и предсказанная последовательности (R = [2, 5, 6])", "figures/lab3_fig01.png"),
+    para("Для проверки качества распознавания сформирована новая последовательность с изменённым "
+         "набором R = [2, 4, 6], для которой также рассчитан и преобразован выход сети."),
+    figure("Рис. 2 — Сеть Элмана: изменённая последовательность (R = [2, 4, 6])", "figures/lab3_fig02.png"),
+    table("Таблица 3 — Результаты распознавания сетью Элмана", ["Последовательность", "Ошибка (MSE)", "Правильно классифицировано"], [
+        ["Исходная, R = [2, 5, 6]", "0.1830", "695 / 821"],
+        ["Изменённая, R = [2, 4, 6]", "—", "654 / 780"],
+    ]),
+    page_break(),
 
-def add_paragraph(doc: Document, text: str, bold: bool = False) -> None:
-    p = doc.add_paragraph()
-    r = p.add_run(text)
-    r.font.size = Pt(14)
-    r.bold = bold
+    # --- Этап 2 ---
+    heading("Этап 2. Сеть Хопфилда для восстановления статических образов"),
+    para("Эталонными образами служат двоичные изображения цифр 0, 1 и 4 (вариант 13) размером 12×10; "
+         "цветам точек соответствуют значения −1 и 1. Весовая матрица сети сформирована по эталонным "
+         "образам (правило Хебба), число итераций восстановления — 600."),
+    para("На вход сети поданы: чистый образ цифры 0, образ цифры 1 с зашумлением 20% и образ цифры 4 "
+         "с зашумлением 30%. Зашумление выполняется инверсией цвета точки, если значение равномерно "
+         "распределённой случайной величины меньше степени зашумления. По выходу сети вычисляется "
+         "расстояние Хэмминга до каждого эталона, ближайший эталон определяет распознанную цифру."),
+    figure("Рис. 3 — Сеть Хопфилда: входные (в т.ч. зашумлённые) и восстановленные образы", "figures/lab3_fig03.png"),
+    table("Таблица 4 — Результаты сети Хопфилда", ["Входной образ", "Расстояния до эталонов [0, 1, 4]", "Распознано"], [
+        ["Цифра 0, без шума", "[0, 69, 70]", "0"],
+        ["Цифра 1, шум 20%", "[69, 0, 67]", "1"],
+        ["Цифра 4, шум 30%", "[70, 67, 0]", "4"],
+    ]),
+    page_break(),
 
+    # --- Этап 3 ---
+    heading("Этап 3. Сеть Хэмминга для классификации образов"),
+    para("Сеть Хэмминга реализована как двухслойная сеть прямого распространения. Первый слой задаёт "
+         "матрицу весов IW из эталонных образов и смещение b1 = R (размерность входного вектора, R = 120), "
+         "его выход a1 = IW · p + b1 пропорционален числу совпадающих компонент. Второй слой — слой "
+         "конкуренции (аналог сети Хопфилда с активацией poslin): диагональные веса равны 1, остальные "
+         "равны −ε, где ε = 1/(Q − 1) = 1/2, Q = 3 — число эталонов. Число итераций — 600."),
+    para("В результате работы в выходном векторе остаётся одна ненулевая компонента, её индекс "
+         "соответствует строке матрицы IW с распознанным эталоном. На вход поданы те же образы, "
+         "что и в этапе 2 (чистый и зашумлённые на 20% и 30%)."),
+    figure("Рис. 4 — Сеть Хэмминга: эталоны, входные образы и результаты классификации", "figures/lab3_fig04.png"),
+    table("Таблица 5 — Результаты сети Хэмминга", ["Входной образ", "Выход сети [0, 1, 4]", "Распознано"], [
+        ["Цифра 0, без шума", "[139.0, 0.0, 0.0]", "0"],
+        ["Цифра 1, шум 20%", "[0.0, 86.0, 0.0]", "1"],
+        ["Цифра 4, шум 30%", "[0.0, 0.0, 73.0]", "4"],
+    ]),
+]
 
-def add_code(doc: Document, text: str) -> None:
-    p = doc.add_paragraph()
-    r = p.add_run(text)
-    r.font.size = Pt(9)
-    r.font.name = "Courier New"
-
-
-def add_table(doc: Document, headers: list[str], rows: list[list[str]]) -> None:
-    table = doc.add_table(rows=1 + len(rows), cols=len(headers))
-    table.style = "Table Grid"
-    for i, header in enumerate(headers):
-        table.rows[0].cells[i].text = header
-    for row_index, row in enumerate(rows, start=1):
-        for col_index, value in enumerate(row):
-            table.rows[row_index].cells[col_index].text = str(value)
-
-
-def notebook_code(path: Path) -> list[str]:
-    nb = json.loads(path.read_text(encoding="utf-8"))
-    chunks: list[str] = []
-    for cell in nb["cells"]:
-        if cell["cell_type"] != "code":
-            continue
-        source = "".join(cell["source"]) if isinstance(cell["source"], list) else cell["source"]
-        source = source.strip()
-        if source:
-            chunks.append(source)
-    return chunks
-
-
-def setup_doc() -> Document:
-    doc = Document()
-    section = doc.sections[0]
-    section.top_margin = Emu(914400)
-    section.bottom_margin = Emu(914400)
-    section.left_margin = Emu(1143000)
-    section.right_margin = Emu(1143000)
-    style = doc.styles["Normal"]
-    style.font.size = Pt(14)
-    style.paragraph_format.space_after = Pt(0)
-    style.paragraph_format.space_before = Pt(0)
-    style.paragraph_format.line_spacing = 1.15
-    return doc
-
-
-def build_docx(number: int, spec: dict) -> Path:
-    folder = FOLDER
-    doc = setup_doc()
-
-    add_centered(doc, "ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ ОБРАЗОВАТЕЛЬНОЕ")
-    add_centered(doc, "УЧРЕЖДЕНИЕ ВЫСШЕГО ОБРАЗОВАНИЯ")
-    add_centered(doc, "РОССИЙСКИЙ УНИВЕРСИТЕТ ДРУЖБЫ НАРОДОВ")
-    add_centered(doc, "ИМЕНИ ПАТРИСА ЛУМУМБЫ")
-    for _ in range(7):
-        doc.add_paragraph()
-    add_centered(doc, "Отчет", True)
-    add_centered(doc, f"о выполнении лабораторной работы № {number}", True)
-    add_centered(doc, f'"{spec["title"]}"')
-    add_centered(doc, 'по дисциплине "Нейронные сети"')
-    doc.add_paragraph()
-    add_centered(doc, f'Вариант задания № {spec["variant"]}')
-    for _ in range(3):
-        doc.add_paragraph()
-    add_paragraph(doc, "Выполнил студент группы ЗФИбд-01-24")
-    add_paragraph(doc, "Князев А. М. __________")
-    doc.add_paragraph()
-    add_paragraph(doc, "Проверил и принял")
-    add_paragraph(doc, "Леонов С. С. __________")
-    doc.add_paragraph()
-    add_paragraph(doc, "с оценкой __________")
-    for _ in range(4):
-        doc.add_paragraph()
-    add_centered(doc, "Москва, 2026")
-    doc.add_page_break()
-
-    add_paragraph(doc, "Цель работы", True)
-    add_paragraph(doc, spec["goal"])
-    doc.add_paragraph()
-    add_paragraph(doc, "Основные этапы работы", True)
-    for index, stage in enumerate(spec["stages"], start=1):
-        add_paragraph(doc, f"{index}. {stage}")
-    doc.add_paragraph()
-    add_paragraph(
-        doc,
-        "Оборудование и программное обеспечение: персональный компьютер, Python 3, "
-        "Jupyter Notebook, PyTorch, NumPy, Matplotlib.",
-    )
-    doc.add_paragraph()
-
-    add_paragraph(doc, "Ход выполнения работы", True)
-    add_paragraph(
-        doc,
-        "Все расчеты выполнены в файле main.ipynb. В коде используется автоматический "
-        "выбор устройства: если CUDA доступна, вычисления выполняются на GPU, иначе на CPU.",
-    )
-    doc.add_paragraph()
-
-    for caption, headers, rows in spec["tables"]:
-        add_paragraph(doc, caption, True)
-        add_table(doc, headers, rows)
-        doc.add_paragraph()
-
-    for image_name, caption in spec["images"]:
-        image_path = folder / image_name
-        if image_path.exists():
-            p = doc.add_paragraph()
-            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            p.add_run().add_picture(str(image_path), width=Cm(15))
-            add_paragraph(doc, caption)
-            doc.add_paragraph()
-
-    doc.add_page_break()
-    add_paragraph(doc, "Код программы", True)
-    for chunk in notebook_code(folder / "main.ipynb"):
-        for line in chunk.splitlines():
-            add_code(doc, line)
-        doc.add_paragraph()
-
-    doc.add_page_break()
-    add_paragraph(doc, "Вывод", True)
-    add_paragraph(doc, spec["conclusion"])
-
-    out = folder / f"report_lab{number}.docx"
-    doc.save(out)
-    return out
-
-
-class PdfBuilder:
-    def __init__(self, out: Path):
-        self.out = out
-        self.pages: list[Image.Image] = []
-        self.width = 1240
-        self.height = 1754
-        self.margin = 90
-        self.y = self.margin
-        self.font = ImageFont.truetype(FONT, 30)
-        self.small = ImageFont.truetype(FONT, 24)
-        self.bold = ImageFont.truetype(BOLD_FONT, 34)
-        self.mono = ImageFont.truetype(MONO_FONT, 18)
-        self.new_page()
-
-    def new_page(self) -> None:
-        page = Image.new("RGB", (self.width, self.height), "white")
-        self.pages.append(page)
-        self.draw = ImageDraw.Draw(page)
-        self.y = self.margin
-
-    def ensure(self, amount: int) -> None:
-        if self.y + amount > self.height - self.margin:
-            self.new_page()
-
-    def line(self, text: str = "", bold: bool = False, mono: bool = False) -> None:
-        font = self.mono if mono else self.bold if bold else self.font
-        max_chars = 112 if mono else 72
-        for wrapped in textwrap.wrap(text, width=max_chars) or [""]:
-            self.ensure(42)
-            self.draw.text((self.margin, self.y), wrapped, fill="black", font=font)
-            self.y += 42 if not mono else 28
-        self.y += 8
-
-    def title_center(self, text: str, font=None) -> None:
-        font = font or self.bold
-        self.ensure(50)
-        box = self.draw.textbbox((0, 0), text, font=font)
-        x = (self.width - (box[2] - box[0])) // 2
-        self.draw.text((x, self.y), text, fill="black", font=font)
-        self.y += 52
-
-    def image(self, path: Path, caption: str) -> None:
-        if not path.exists():
-            return
-        img = Image.open(path).convert("RGB")
-        max_w = self.width - 2 * self.margin
-        max_h = 520
-        img.thumbnail((max_w, max_h))
-        self.ensure(img.height + 95)
-        x = (self.width - img.width) // 2
-        self.pages[-1].paste(img, (x, self.y))
-        self.y += img.height + 18
-        self.line(caption)
-
-    def save(self) -> None:
-        first, *rest = self.pages
-        first.save(self.out, save_all=True, append_images=rest)
-
-
-def build_pdf(number: int, spec: dict) -> Path:
-    folder = FOLDER
-    out = folder / f"report_lab{number}.pdf"
-    pdf = PdfBuilder(out)
-    pdf.title_center("Отчет")
-    pdf.title_center(f"о выполнении лабораторной работы № {number}")
-    pdf.title_center(spec["title"])
-    pdf.title_center(f"Вариант {spec['variant']}")
-    pdf.y += 120
-    pdf.line("Выполнил студент группы ЗФИбд-01-24: Князев А. М.")
-    pdf.line("Проверил: Леонов С. С.")
-    pdf.title_center("Москва, 2026")
-    pdf.new_page()
-
-    pdf.line("Цель работы", bold=True)
-    pdf.line(spec["goal"])
-    pdf.line("Основные этапы работы", bold=True)
-    for index, stage in enumerate(spec["stages"], start=1):
-        pdf.line(f"{index}. {stage}")
-    pdf.line("Ход выполнения и результаты", bold=True)
-    for caption, headers, rows in spec["tables"]:
-        pdf.line(caption, bold=True)
-        pdf.line(" | ".join(headers))
-        for row in rows:
-            pdf.line(" | ".join(str(x) for x in row))
-        pdf.line()
-    for image_name, caption in spec["images"]:
-        pdf.image(folder / image_name, caption)
-    pdf.line("Вывод", bold=True)
-    pdf.line(spec["conclusion"])
-    pdf.new_page()
-    pdf.line("Фрагменты кода из main.ipynb", bold=True)
-    for chunk in notebook_code(folder / "main.ipynb")[:10]:
-        for line in chunk.splitlines()[:45]:
-            pdf.line(line[:120], mono=True)
-        pdf.line()
-    pdf.save()
-    return out
+CONCLUSION = [
+    "В ходе работы исследованы три типа нейронных сетей для распознавания образов: рекуррентная "
+    "сеть Элмана, а также ассоциативные сети Хопфилда и Хэмминга.",
+    "Сеть Элмана обучена распознавать участки последовательности, соответствующие заданному "
+    "динамическому образу g(k). На исходной последовательности (R = [2, 5, 6]) верно "
+    "классифицировано 695 из 821 точки, на изменённой (R = [2, 4, 6]) — 654 из 780. Часть ошибок "
+    "приходится на переходные участки между сигналами, что закономерно для рекуррентной сети при "
+    "заданных параметрах обучения.",
+    "Сеть Хопфилда корректно восстановила все три эталонных образа (цифры 0, 1, 4), включая образы, "
+    "зашумлённые на 20% и 30%: расстояние Хэмминга до правильного эталона во всех случаях равно нулю.",
+    "Сеть Хэмминга также верно классифицировала все поданные образы — на выходе оставалась "
+    "единственная ненулевая компонента, соответствующая правильной цифре. Таким образом, обе "
+    "ассоциативные сети устойчивы к внесённому шуму, а цель работы достигнута.",
+]
 
 
 def main() -> None:
-    docx = build_docx(LAB_NUMBER, SPEC)
-    pdf = build_pdf(LAB_NUMBER, SPEC)
-    print(f"created {docx.name}")
-    print(f"created {pdf.name}")
+    build_report(
+        number=3,
+        title="Сети Элмана, Хопфилда и Хэмминга",
+        variant="13",
+        goal=GOAL,
+        stages=STAGES,
+        equipment=EQUIPMENT,
+        blocks=BLOCKS,
+        conclusion=CONCLUSION,
+        folder=FOLDER,
+    )
 
 
 if __name__ == "__main__":
