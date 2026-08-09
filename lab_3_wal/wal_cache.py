@@ -1,10 +1,7 @@
 import json
 import os
 import threading
-import time
-from typing import Any, Optional
-
-_TOMBSTONE = object()
+from typing import Any
 
 
 class WalCache:
@@ -81,7 +78,10 @@ class WalCache:
                 snapshot = list(self._store.items())
             with open(tmp_path, "w", encoding="utf-8") as f:
                 for k, v in snapshot:
-                    f.write(json.dumps({"op": "set", "k": k, "v": v}, ensure_ascii=False) + "\n")
+                    f.write(
+                        json.dumps({"op": "set", "k": k, "v": v}, ensure_ascii=False)
+                        + "\n"
+                    )
                 f.flush()
                 os.fsync(f.fileno())
             os.replace(tmp_path, self._wal_path)
