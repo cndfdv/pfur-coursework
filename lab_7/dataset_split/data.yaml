@@ -1,7 +1,0 @@
-names:
-- fruit
-nc: 1
-path: /home/usr4/Arsenii/sbor_data_pfur/lab_7/dataset_split
-test: test/images
-train: train/images
-val: val/images
