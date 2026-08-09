@@ -7,9 +7,10 @@ from itertools import chain
 from pathlib import Path
 from typing import Iterator
 
-from app.core.exceptions import BaseAppError, DataFormatError
+from app.core.exceptions import BaseAppError
 from app.core.models import Transaction
 from app.io.registry import READERS
+from app.io.transactions import read_transactions
 from app.services.aggregator import aggregate_by_category
 from app.services.validator import validate_stream
 
@@ -27,11 +28,7 @@ def process_file(path: Path, errors: list[str]) -> Iterator[Transaction]:
 
     Битые строки логируются и складываются в errors, остальные едут дальше.
     """
-    reader = READERS.get(path.suffix.lower())
-    if reader is None:
-        raise DataFormatError(f"Неизвестное расширение: {path.suffix}")
-
-    yield from validate_stream(reader(path), errors, source=path.name)
+    yield from validate_stream(read_transactions(path), errors, source=path.name)
 
 
 def save_result(totals: dict[str, float], output: Path) -> None:
@@ -43,7 +40,7 @@ def save_result(totals: dict[str, float], output: Path) -> None:
 
 
 def _file_streams(files: list[Path], file_errors: dict[Path, list[str]],
-                  fatal_errors: list[str]) -> Iterator[Transaction]:
+                    fatal_errors: list[str]) -> Iterator[Transaction]:
     """Лениво проходит по файлам, склеивая их потоки в один."""
     for path in files:
         try:
@@ -60,8 +57,14 @@ def run(data_dir: Path, output: Path, profile: bool = False) -> dict[str, float]
         print(f"Директория {data_dir} не найдена", file=sys.stderr)
         sys.exit(1)
 
-    files = sorted(p for p in data_dir.iterdir() if p.suffix.lower() in READERS)
-    file_errors: dict[Path, list[str]] = {p: [] for p in files}
+    files: list[Path] = []
+    for path in sorted(data_dir.iterdir()):
+        if path.suffix.lower() in READERS:
+            files.append(path)
+
+    file_errors: dict[Path, list[str]] = {}
+    for path in files:
+        file_errors[path] = []
     fatal_errors: list[str] = []
 
     if profile:
@@ -80,8 +83,15 @@ def run(data_dir: Path, output: Path, profile: bool = False) -> dict[str, float]
         for e in errs:
             log.warning(e)
 
-    success = sum(1 for p in files if not file_errors[p] and p.name not in
-                  {fe.split(":")[0] for fe in fatal_errors})
+    failed_file_names: set[str] = set()
+    for error in fatal_errors:
+        failed_file_names.add(error.split(":", maxsplit=1)[0])
+
+    success = sum(
+        1
+        for p in files
+        if not file_errors[p] and p.name not in failed_file_names
+    )
     all_errors = list(chain(fatal_errors, *file_errors.values()))
 
     print(
@@ -100,8 +110,11 @@ if __name__ == "__main__":
         print("Использование: python main.py <папка_с_данными> [output.json] [--profile]")
         sys.exit(1)
 
-    args = [a for a in sys.argv[1:] if a != "--profile"]
     profile = "--profile" in sys.argv
+    args: list[str] = []
+    for arg in sys.argv[1:]:
+        if arg != "--profile":
+            args.append(arg)
 
     data_dir = Path(args[0])
     output = Path(args[1]) if len(args) > 1 else Path("result.json")
