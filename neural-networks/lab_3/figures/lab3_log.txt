@@ -1,0 +1,10 @@
+Device: mps
+Elman train loss: 0.182998
+Correct points: 695/821
+Changed sequence R=[2,4,6]: 654/780 correct
+Hopfield 0 clean: closest digit=0, distances=[0, 69, 70]
+Hopfield 1 noise 20%: closest digit=1, distances=[69, 0, 67]
+Hopfield 4 noise 30%: closest digit=4, distances=[70, 67, 0]
+Hamming 0 clean: activation=[139.0, 0.0, 0.0], digit=0
+Hamming 1 noise 20%: activation=[0.0, 86.0, 0.0], digit=1
+Hamming 4 noise 30%: activation=[0.0, 0.0, 73.0], digit=4

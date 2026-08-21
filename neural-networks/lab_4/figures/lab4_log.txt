@@ -1,0 +1,11 @@
+Device: mps
+(1792, 5000) (448, 5000) (560, 5000)
+IMDB variant: test_loss=0.0769, test_acc=0.8964
+IMDB baseline: test_loss=0.2458, test_acc=0.8946
+Reuters train/val/test: 7185/1797/2246
+Reuters classes: 46
+Multiclass variant: test_loss=1.7665, test_acc=0.7467
+Multiclass baseline: test_loss=1.2476, test_acc=0.7796
+Boston Housing samples/features: 506/13
+Regression KFold MAE: [2.82, 2.64, 3.28, 3.01], mean=2.94
+Regression baseline MAE: [2.89, 2.75, 2.82, 2.62], mean=2.77
