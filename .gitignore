@@ -3,4 +3,6 @@ IMDB
 data
 *.zip
 Cats vs Dogs/
-Jena Climate
+Jena Climate__pycache__/
+*.pyc
+.ipynb_checkpoints/
