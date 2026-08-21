@@ -3,3 +3,7 @@
 *tfevents
 *.pt
 DS_Store
+.DS_Store
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
