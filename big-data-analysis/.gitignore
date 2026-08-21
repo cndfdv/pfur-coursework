@@ -1,0 +1,45 @@
+# Python / Jupyter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local editor and OS files
+.DS_Store
+*~
+*.swp
+.idea/
+.vscode/
+
+# Local agent/cache folders
+.agents/
+.codex/
+cache/
+
+# Lab data and generated intermediates
+lab_2/data/*
+!lab_2/data/README.md
+lab_2/_extracted/
+lab_2/processed/
+lab_2/figures/
+lab_2/src/
+
+# Old raw year folders and downloaded archives
+lab_2/18-19/
+lab_2/19-20/
+lab_2/20-21/
+lab_2/21-22/
+lab_2/22-23/
+lab_2/23-24/
+lab_2/24-25/
+lab_2/25-26/
+lab_2/*.zip
+lab_2/*.rar
+lab_2/*.7z
+lab_2/*.xls
+lab_2/*.xlsx
+
+# Office lock files
+~$*
