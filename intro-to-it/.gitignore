@@ -1,0 +1,8 @@
+*.zip
+.DS_Store
+__pycache__/
+*.pyc
+AIF_programming_practice/
+
+# Локальный большой набор данных: GitHub не принимает файлы больше 100 MiB.
+second_semestr/lab_5/data/big.csv

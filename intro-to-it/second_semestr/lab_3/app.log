@@ -1,0 +1,5 @@
+2026-04-27 11:46:07,843 [ERROR] broken.json: Битый JSON в broken.json: Expecting property name enclosed in double quotes: line 1 column 13 (char 12)
+2026-04-27 11:46:07,843 [WARNING] dept_east.csv, запись №2: amount не приводится к float: 'abc'
+2026-04-27 11:46:07,843 [WARNING] dept_east.csv, запись №3: amount должен быть > 0, получили -100.0
+2026-04-27 11:46:07,843 [WARNING] dept_east.csv, запись №5: Отсутствует поле 'amount'
+2026-04-27 11:46:07,843 [ERROR] empty.csv: Пустой CSV: empty.csv
