@@ -1,0 +1,51 @@
+filename,expected_class_id,expected_label,rank,class_id,label,probability
+n01440764_tench.JPEG,0,tench,1,0,tench,0.9552351832389832
+n01440764_tench.JPEG,0,tench,2,389,barracouta,0.020028039813041687
+n01440764_tench.JPEG,0,tench,3,1,goldfish,0.01610421948134899
+n01440764_tench.JPEG,0,tench,4,391,coho,0.003198083955794573
+n01440764_tench.JPEG,0,tench,5,758,reel,0.0013305065222084522
+n01443537_goldfish.JPEG,1,goldfish,1,1,goldfish,0.9919297695159912
+n01443537_goldfish.JPEG,1,goldfish,2,0,tench,0.007616718765348196
+n01443537_goldfish.JPEG,1,goldfish,3,389,barracouta,0.00023152018547989428
+n01443537_goldfish.JPEG,1,goldfish,4,395,gar,8.752946450840682e-05
+n01443537_goldfish.JPEG,1,goldfish,5,392,rock beauty,8.619103027740493e-05
+n01484850_great_white_shark.JPEG,2,great white shark,1,2,great white shark,0.940312922000885
+n01484850_great_white_shark.JPEG,2,great white shark,2,3,tiger shark,0.05350978299975395
+n01484850_great_white_shark.JPEG,2,great white shark,3,4,hammerhead,0.0020764146465808153
+n01484850_great_white_shark.JPEG,2,great white shark,4,394,sturgeon,0.0020539916586130857
+n01484850_great_white_shark.JPEG,2,great white shark,5,149,dugong,0.0011214553378522396
+n01518878_ostrich.JPEG,9,ostrich,1,9,ostrich,0.9939722418785095
+n01518878_ostrich.JPEG,9,ostrich,2,346,water buffalo,0.001150243217125535
+n01518878_ostrich.JPEG,9,ostrich,3,345,ox,0.0010205898433923721
+n01518878_ostrich.JPEG,9,ostrich,4,690,oxcart,0.0009232561569660902
+n01518878_ostrich.JPEG,9,ostrich,5,354,Arabian camel,0.00047287531197071075
+n02099601_golden_retriever.JPEG,207,golden retriever,1,207,golden retriever,0.569348156452179
+n02099601_golden_retriever.JPEG,207,golden retriever,2,175,otterhound,0.08482368290424347
+n02099601_golden_retriever.JPEG,207,golden retriever,3,805,soccer ball,0.030112193897366524
+n02099601_golden_retriever.JPEG,207,golden retriever,4,216,clumber,0.02853408083319664
+n02099601_golden_retriever.JPEG,207,golden retriever,5,170,Irish wolfhound,0.025963880121707916
+n02123045_tabby.JPEG,281,tabby,1,285,Egyptian cat,0.5758298635482788
+n02123045_tabby.JPEG,281,tabby,2,282,tiger cat,0.22813065350055695
+n02123045_tabby.JPEG,281,tabby,3,281,tabby,0.18805178999900818
+n02123045_tabby.JPEG,281,tabby,4,287,lynx,0.003451871918514371
+n02123045_tabby.JPEG,281,tabby,5,292,tiger,0.0007924946839921176
+n02504458_African_elephant.JPEG,386,African elephant,1,386,African elephant,0.9604026079177856
+n02504458_African_elephant.JPEG,386,African elephant,2,385,Indian elephant,0.0335531011223793
+n02504458_African_elephant.JPEG,386,African elephant,3,101,tusker,0.005454368889331818
+n02504458_African_elephant.JPEG,386,African elephant,4,346,water buffalo,0.0005408793222159147
+n02504458_African_elephant.JPEG,386,African elephant,5,347,bison,5.126546966494061e-06
+n02690373_airliner.JPEG,404,airliner,1,404,airliner,0.7872557044029236
+n02690373_airliner.JPEG,404,airliner,2,908,wing,0.19540990889072418
+n02690373_airliner.JPEG,404,airliner,3,407,ambulance,0.004763539880514145
+n02690373_airliner.JPEG,404,airliner,4,895,warplane,0.0042784023098647594
+n02690373_airliner.JPEG,404,airliner,5,871,trimaran,0.0012961882166564465
+n07753275_pineapple.JPEG,953,pineapple,1,953,pineapple,0.9986152648925781
+n07753275_pineapple.JPEG,953,pineapple,2,998,ear,0.0005078834947198629
+n07753275_pineapple.JPEG,953,pineapple,3,599,honeycomb,0.00033287584665231407
+n07753275_pineapple.JPEG,953,pineapple,4,987,corn,0.00015327826258726418
+n07753275_pineapple.JPEG,953,pineapple,5,954,banana,7.20623938832432e-05
+n07753592_banana.JPEG,954,banana,1,954,banana,0.8093119859695435
+n07753592_banana.JPEG,954,banana,2,998,ear,0.03279402107000351
+n07753592_banana.JPEG,954,banana,3,987,corn,0.03081982396543026
+n07753592_banana.JPEG,954,banana,4,738,pot,0.023677028715610504
+n07753592_banana.JPEG,954,banana,5,955,jackfruit,0.016697408631443977

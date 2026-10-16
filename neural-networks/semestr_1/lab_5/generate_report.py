@@ -10,7 +10,7 @@ from pathlib import Path
 FOLDER = Path(__file__).resolve().parent
 sys.path.insert(0, str(FOLDER.parent))
 
-from report_utils import build_report, figure, heading, page_break, para, table
+from semestr_1.report_utils import build_report, figure, heading, page_break, para, table
 
 GOAL = (
     "изучение свёрточных нейронных сетей для распознавания изображений: построение свёрточного "
