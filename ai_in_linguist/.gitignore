@@ -1,0 +1,20 @@
+.plans/
+
+# macOS и временные файлы редакторов
+.DS_Store
+~$*.docx
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Локальное окружение Python и кэш
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Временные файлы Jupyter и результаты проверочных запусков
+.ipynb_checkpoints/
+*.checked.ipynb

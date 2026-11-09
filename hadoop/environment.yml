@@ -1,0 +1,12 @@
+name: hadoop
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - openjdk=17
+  - pyspark=4.0.1
+  - mrjob=0.7.4
+  - pandas
+  - jupyterlab
+  - ipykernel
+  - nbconvert

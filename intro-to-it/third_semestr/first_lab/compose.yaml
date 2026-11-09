@@ -1,0 +1,13 @@
+services:
+  rag:
+    build: .
+    ports:
+      - "127.0.0.1:8501:8501"
+    environment:
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+    volumes:
+      - ./data:/app/data:ro
+      - model-cache:/app/.cache/huggingface
+
+volumes:
+  model-cache:

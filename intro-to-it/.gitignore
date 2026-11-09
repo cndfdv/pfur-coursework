@@ -6,3 +6,6 @@ AIF_programming_practice/
 
 # Локальный большой набор данных: GitHub не принимает файлы больше 100 MiB.
 second_semestr/lab_5/data/big.csv
+
+.vscode/
+third_semestr/lab_1/data/
