@@ -1,0 +1,702 @@
+[
+  {
+    "filename": "n01440764_tench.JPEG",
+    "class_id": 0,
+    "synset": "n01440764",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01440764_tench.JPEG",
+    "sha256": "98f7e89b26142f7bdb61f3a627dee89729b0bb07a29e9e7f3be9d394c00c6f01"
+  },
+  {
+    "filename": "n01443537_goldfish.JPEG",
+    "class_id": 1,
+    "synset": "n01443537",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01443537_goldfish.JPEG",
+    "sha256": "61ff9f1e0c4ed5906efed08c19d0c501b5ba75e45df77818d533a28e825341aa"
+  },
+  {
+    "filename": "n01484850_great_white_shark.JPEG",
+    "class_id": 2,
+    "synset": "n01484850",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01484850_great_white_shark.JPEG",
+    "sha256": "2154d212dbb63a67f1436967223d846f687121cdd9ed1a37d6ca8f0821d385bc"
+  },
+  {
+    "filename": "n01518878_ostrich.JPEG",
+    "class_id": 9,
+    "synset": "n01518878",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01518878_ostrich.JPEG",
+    "sha256": "0592f75d50591658aca0d09060d20303336b7b6e7ef4d47ac137fea6d42d9cb2"
+  },
+  {
+    "filename": "n01530575_brambling.JPEG",
+    "class_id": 10,
+    "synset": "n01530575",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01530575_brambling.JPEG",
+    "sha256": "09570f8760a6bde05eb52ea544213b83f9167f95cf2a05d7a8df8b1a6b276344"
+  },
+  {
+    "filename": "n01632777_axolotl.JPEG",
+    "class_id": 29,
+    "synset": "n01632777",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01632777_axolotl.JPEG",
+    "sha256": "04c86fd7c01c8383c04ff088a65a0e8692e8e4a8fa3169026249607252bc299f"
+  },
+  {
+    "filename": "n01644373_tree_frog.JPEG",
+    "class_id": 31,
+    "synset": "n01644373",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01644373_tree_frog.JPEG",
+    "sha256": "4f5f4f5650481bb27a68bffc5f09c388e0c6fe74d5bd939251e446d574e8c8d8"
+  },
+  {
+    "filename": "n01665541_leatherback_turtle.JPEG",
+    "class_id": 34,
+    "synset": "n01665541",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01665541_leatherback_turtle.JPEG",
+    "sha256": "050274dc6b49ebc22edaf6a60002719f9e277aec444edb2c91a3749ea6ea17bb"
+  },
+  {
+    "filename": "n01667778_terrapin.JPEG",
+    "class_id": 36,
+    "synset": "n01667778",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01667778_terrapin.JPEG",
+    "sha256": "936bccf5a153c64aa94b9ed13bf9439797b406463395e35c365ea75c4962a54a"
+  },
+  {
+    "filename": "n01695060_Komodo_dragon.JPEG",
+    "class_id": 48,
+    "synset": "n01695060",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01695060_Komodo_dragon.JPEG",
+    "sha256": "10087f78efc4e3ab80163b23d632c43008c8ba527d800ae30cf75cfbd7b99694"
+  },
+  {
+    "filename": "n01698640_American_alligator.JPEG",
+    "class_id": 50,
+    "synset": "n01698640",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01698640_American_alligator.JPEG",
+    "sha256": "714cee814bae6b054ed4c9a16f3949049f9616d940350006e7630ba2479af875"
+  },
+  {
+    "filename": "n01774384_black_widow.JPEG",
+    "class_id": 75,
+    "synset": "n01774384",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01774384_black_widow.JPEG",
+    "sha256": "384f4a3651ba20ea3351311da66de4337adb8f62a784b93aa6d549564d5085c5"
+  },
+  {
+    "filename": "n01806143_peacock.JPEG",
+    "class_id": 84,
+    "synset": "n01806143",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01806143_peacock.JPEG",
+    "sha256": "e2e1f393bd015d7dffbbbfb2898ef3580bc0a145fb37c4ffc00105fb95122072"
+  },
+  {
+    "filename": "n01806567_quail.JPEG",
+    "class_id": 85,
+    "synset": "n01806567",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01806567_quail.JPEG",
+    "sha256": "25382aa8ec033aa4e93b8bedbb8d1a7a28b749ec0e3e532baefb20d8d65c4706"
+  },
+  {
+    "filename": "n01829413_hornbill.JPEG",
+    "class_id": 93,
+    "synset": "n01829413",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01829413_hornbill.JPEG",
+    "sha256": "9f3ab6f1113febc1018bc6faccaebf75ffb994e3b33acfb7166670025b8e75f6"
+  },
+  {
+    "filename": "n01855032_red-breasted_merganser.JPEG",
+    "class_id": 98,
+    "synset": "n01855032",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01855032_red-breasted_merganser.JPEG",
+    "sha256": "533d1f875fdba1555a4342167661c5bb828221fc01f8f23dbd29d81a71fd351e"
+  },
+  {
+    "filename": "n01855672_goose.JPEG",
+    "class_id": 99,
+    "synset": "n01855672",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01855672_goose.JPEG",
+    "sha256": "7d8ed30131477fe6b5d9d14a9d4d67b9e0d4c6ce15be8a3066f017922d35ac0a"
+  },
+  {
+    "filename": "n01873310_platypus.JPEG",
+    "class_id": 103,
+    "synset": "n01873310",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01873310_platypus.JPEG",
+    "sha256": "7895dcd43e55a10e3f2587842a1efa7d9b5c8665771c0ee7b7aeb0dbea8b555c"
+  },
+  {
+    "filename": "n01910747_jellyfish.JPEG",
+    "class_id": 107,
+    "synset": "n01910747",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01910747_jellyfish.JPEG",
+    "sha256": "2c0e7323aa9d6c5e7807a61ab7dc6383f0bcc75fa10b118f2a766e2ab82030e1"
+  },
+  {
+    "filename": "n01914609_sea_anemone.JPEG",
+    "class_id": 108,
+    "synset": "n01914609",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01914609_sea_anemone.JPEG",
+    "sha256": "7b69b2fee97ec23a9a6c2a922879d40500b2cf6a9d9314f7d5fdd475973013d5"
+  },
+  {
+    "filename": "n01978287_Dungeness_crab.JPEG",
+    "class_id": 118,
+    "synset": "n01978287",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n01978287_Dungeness_crab.JPEG",
+    "sha256": "44264cb5e64534d8d12c50c56c8f8a22ca13a6a40c4461463316ef835fb99fd1"
+  },
+  {
+    "filename": "n02009229_little_blue_heron.JPEG",
+    "class_id": 131,
+    "synset": "n02009229",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02009229_little_blue_heron.JPEG",
+    "sha256": "28c2f5c360856b84590cf1f438640b0ad2105192446b2d46daf33afca7882df2"
+  },
+  {
+    "filename": "n02058221_albatross.JPEG",
+    "class_id": 146,
+    "synset": "n02058221",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02058221_albatross.JPEG",
+    "sha256": "0929fbb30b4b174b4d73f8360a3ad8c33f97ae6a6940dcd3c05d0c3dea19f7b3"
+  },
+  {
+    "filename": "n02088466_bloodhound.JPEG",
+    "class_id": 163,
+    "synset": "n02088466",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02088466_bloodhound.JPEG",
+    "sha256": "5193a268ecea7e0992aa6f442a3f420084eb54db06b367b93d5c942084677839"
+  },
+  {
+    "filename": "n02089973_English_foxhound.JPEG",
+    "class_id": 167,
+    "synset": "n02089973",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02089973_English_foxhound.JPEG",
+    "sha256": "495864f6bd27e71c2fd4b6c064ab9a51030cbf3279842de4a94b57d0cd7d684c"
+  },
+  {
+    "filename": "n02097474_Tibetan_terrier.JPEG",
+    "class_id": 200,
+    "synset": "n02097474",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02097474_Tibetan_terrier.JPEG",
+    "sha256": "3ba6ddf33c4cd9400f8ffa2a40a58bb0f39cc0decc4b0ee50b6c5fe5f021b57e"
+  },
+  {
+    "filename": "n02099601_golden_retriever.JPEG",
+    "class_id": 207,
+    "synset": "n02099601",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02099601_golden_retriever.JPEG",
+    "sha256": "e3110d963cb53bb99caf2d26c04cbcf8c8d35a0bbbce81c4caef71ec268e411e"
+  },
+  {
+    "filename": "n02099712_Labrador_retriever.JPEG",
+    "class_id": 208,
+    "synset": "n02099712",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02099712_Labrador_retriever.JPEG",
+    "sha256": "473fb9cc067a2d50a2d60866df4310abc9178b462c7e64d744f5f2a2f0e4f78b"
+  },
+  {
+    "filename": "n02105162_malinois.JPEG",
+    "class_id": 225,
+    "synset": "n02105162",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02105162_malinois.JPEG",
+    "sha256": "7ba332fbab67b132ade6c8c39de22bffc88e16a8c9133b59cd6609229141a7d9"
+  },
+  {
+    "filename": "n02105505_komondor.JPEG",
+    "class_id": 228,
+    "synset": "n02105505",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02105505_komondor.JPEG",
+    "sha256": "226762876a8433ad7ae13a40b0b1407548633c4552022ef6bba0df06d682298e"
+  },
+  {
+    "filename": "n02105855_Shetland_sheepdog.JPEG",
+    "class_id": 230,
+    "synset": "n02105855",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02105855_Shetland_sheepdog.JPEG",
+    "sha256": "4497883c341143f34be95b81a4dfda6da0bdeb77b414f13c4580960a22760752"
+  },
+  {
+    "filename": "n02106382_Bouvier_des_Flandres.JPEG",
+    "class_id": 233,
+    "synset": "n02106382",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02106382_Bouvier_des_Flandres.JPEG",
+    "sha256": "4146973f8104e209d9b3e7b55b2ab3105667d939d96127825600dc954eac160c"
+  },
+  {
+    "filename": "n02107574_Greater_Swiss_Mountain_dog.JPEG",
+    "class_id": 238,
+    "synset": "n02107574",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02107574_Greater_Swiss_Mountain_dog.JPEG",
+    "sha256": "28f801247c5282b014537f09802b2d95f424660275a44e9e3473139a65551b58"
+  },
+  {
+    "filename": "n02108422_bull_mastiff.JPEG",
+    "class_id": 243,
+    "synset": "n02108422",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02108422_bull_mastiff.JPEG",
+    "sha256": "c647ebcc897f5f416bd6c5f1a075f18ca11d9d22d0400fb58de5b6f985da92d4"
+  },
+  {
+    "filename": "n02111129_Leonberg.JPEG",
+    "class_id": 255,
+    "synset": "n02111129",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02111129_Leonberg.JPEG",
+    "sha256": "f11a3cee26f27b01b237d7adca14dddda05aac876fb40a68e94f67e240a14db5"
+  },
+  {
+    "filename": "n02116738_African_hunting_dog.JPEG",
+    "class_id": 275,
+    "synset": "n02116738",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02116738_African_hunting_dog.JPEG",
+    "sha256": "a1d96cdac63c4c254092df650f0d364b52c944d3f97ccd662e7a331f19cc9a68"
+  },
+  {
+    "filename": "n02123045_tabby.JPEG",
+    "class_id": 281,
+    "synset": "n02123045",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02123045_tabby.JPEG",
+    "sha256": "678cd3aca4149cf0ed354c19061cb51a0a972bbd713864b7cef3eba02c332984"
+  },
+  {
+    "filename": "n02127052_lynx.JPEG",
+    "class_id": 287,
+    "synset": "n02127052",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02127052_lynx.JPEG",
+    "sha256": "e78e94f4c1162d0443f447b15eab7f8c1b1187b93835e111a4896e2ae0783cc2"
+  },
+  {
+    "filename": "n02128925_jaguar.JPEG",
+    "class_id": 290,
+    "synset": "n02128925",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02128925_jaguar.JPEG",
+    "sha256": "6662d41a8518afe2f1e1958b8b49d488f342c97a0536de027511e4e7be529094"
+  },
+  {
+    "filename": "n02167151_ground_beetle.JPEG",
+    "class_id": 302,
+    "synset": "n02167151",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02167151_ground_beetle.JPEG",
+    "sha256": "2b2b976a59845a970f63956ee6242474e428f4c0cab06009882428eaf4496513"
+  },
+  {
+    "filename": "n02174001_rhinoceros_beetle.JPEG",
+    "class_id": 306,
+    "synset": "n02174001",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02174001_rhinoceros_beetle.JPEG",
+    "sha256": "919a2bb0dea83a0414e9ce04234030875c418a9c283a71fc761cb094740abef2"
+  },
+  {
+    "filename": "n02417914_ibex.JPEG",
+    "class_id": 350,
+    "synset": "n02417914",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02417914_ibex.JPEG",
+    "sha256": "ad6690c058a74e8b130e11e1a75adc888d3b2c204418993c811afa67b48dfa61"
+  },
+  {
+    "filename": "n02437312_Arabian_camel.JPEG",
+    "class_id": 354,
+    "synset": "n02437312",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02437312_Arabian_camel.JPEG",
+    "sha256": "24f632d1ea49e68e24e78e5d7e75f4945ceab33d5e319e25bb0b035c61d19a37"
+  },
+  {
+    "filename": "n02443114_polecat.JPEG",
+    "class_id": 358,
+    "synset": "n02443114",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02443114_polecat.JPEG",
+    "sha256": "f199c51c48717c5842bc6ec439c3b7945e3183bb1a2e736887ecb31f105ce07e"
+  },
+  {
+    "filename": "n02487347_macaque.JPEG",
+    "class_id": 373,
+    "synset": "n02487347",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02487347_macaque.JPEG",
+    "sha256": "119f7e911d086e31edf63ebdbfd011bcac48ecf57e75a5b7724e3190971e1625"
+  },
+  {
+    "filename": "n02489166_proboscis_monkey.JPEG",
+    "class_id": 376,
+    "synset": "n02489166",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02489166_proboscis_monkey.JPEG",
+    "sha256": "62ada7877daf20e1d6633adc8b93e124f28c3e350fda7a93e75c34981bbcc6e0"
+  },
+  {
+    "filename": "n02504458_African_elephant.JPEG",
+    "class_id": 386,
+    "synset": "n02504458",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02504458_African_elephant.JPEG",
+    "sha256": "76797970f4b4837f4cc40108f03b7dfc9d58a6b3234e91f29aa0b64459a820c4"
+  },
+  {
+    "filename": "n02640242_sturgeon.JPEG",
+    "class_id": 394,
+    "synset": "n02640242",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02640242_sturgeon.JPEG",
+    "sha256": "ecf7838ac20769f49049228d2e3da3c15bb16e24e8cefa72aa768f67f437ebd4"
+  },
+  {
+    "filename": "n02643566_lionfish.JPEG",
+    "class_id": 396,
+    "synset": "n02643566",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02643566_lionfish.JPEG",
+    "sha256": "cca0ccffdda20afbc238f41d6000ab98e4517166b8623793850ffaabbcca95d0"
+  },
+  {
+    "filename": "n02690373_airliner.JPEG",
+    "class_id": 404,
+    "synset": "n02690373",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02690373_airliner.JPEG",
+    "sha256": "7c485f53b3428876ae641e6241e0b4350decbe52a35fc3138d4b9fc46c092e06"
+  },
+  {
+    "filename": "n02814860_beacon.JPEG",
+    "class_id": 437,
+    "synset": "n02814860",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02814860_beacon.JPEG",
+    "sha256": "f28c7a38a3cde6aa215aace2f2df45566717bc4aa60964a173a632d186d0a457"
+  },
+  {
+    "filename": "n02823428_beer_bottle.JPEG",
+    "class_id": 440,
+    "synset": "n02823428",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02823428_beer_bottle.JPEG",
+    "sha256": "4d1290062390c7084e754c60e6ebfc6d07605482971d264840dcc9598ffb76a0"
+  },
+  {
+    "filename": "n02927161_butcher_shop.JPEG",
+    "class_id": 467,
+    "synset": "n02927161",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02927161_butcher_shop.JPEG",
+    "sha256": "9c79ad6c6f226a3947ff2556402b1dae9858aa92d3e0cca7f62d0feea00a7ed8"
+  },
+  {
+    "filename": "n02971356_carton.JPEG",
+    "class_id": 478,
+    "synset": "n02971356",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n02971356_carton.JPEG",
+    "sha256": "77eb8acb62943d5b533c266105ae9fd32d12457cf1973ec4a41ee4399238da92"
+  },
+  {
+    "filename": "n03160309_dam.JPEG",
+    "class_id": 525,
+    "synset": "n03160309",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03160309_dam.JPEG",
+    "sha256": "4e1fc20c108b8d0f2627521c55bb140d811b6124513c02aceb7ce077a22614af"
+  },
+  {
+    "filename": "n03355925_flagpole.JPEG",
+    "class_id": 557,
+    "synset": "n03355925",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03355925_flagpole.JPEG",
+    "sha256": "6bdc3bd4d091661989c3d9aa9de6665bd75844cbc1eb1bc1178703d8cba676c2"
+  },
+  {
+    "filename": "n03394916_French_horn.JPEG",
+    "class_id": 566,
+    "synset": "n03394916",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03394916_French_horn.JPEG",
+    "sha256": "accea5733f3e25b098b8fe03a3821da91d6f534957efb05966137cfb0cfb9a0c"
+  },
+  {
+    "filename": "n03444034_go-kart.JPEG",
+    "class_id": 573,
+    "synset": "n03444034",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03444034_go-kart.JPEG",
+    "sha256": "0e5f613d419771444e296f3a279a205de59335cd76dd41988f3925fe0c61c83d"
+  },
+  {
+    "filename": "n03461385_grocery_store.JPEG",
+    "class_id": 582,
+    "synset": "n03461385",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03461385_grocery_store.JPEG",
+    "sha256": "003d930f5207528dcd386b279580be7da9d94dd87aa455fe3ec449f3cdff1a14"
+  },
+  {
+    "filename": "n03530642_honeycomb.JPEG",
+    "class_id": 599,
+    "synset": "n03530642",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03530642_honeycomb.JPEG",
+    "sha256": "cc698372d71d8e7ed92ad66c1ece7d183d3e5847090e541d5d55e1fb19f28632"
+  },
+  {
+    "filename": "n03598930_jigsaw_puzzle.JPEG",
+    "class_id": 611,
+    "synset": "n03598930",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03598930_jigsaw_puzzle.JPEG",
+    "sha256": "95566f945fec36d3db47a270531f9a2ccebd5dca0d8e9291221e16f42ebb4155"
+  },
+  {
+    "filename": "n03599486_jinrikisha.JPEG",
+    "class_id": 612,
+    "synset": "n03599486",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03599486_jinrikisha.JPEG",
+    "sha256": "04fcf2f4b247fca5a5feae453aea2bd7baa90e55d0a47c5ab32ba4e637f3f2e8"
+  },
+  {
+    "filename": "n03661043_library.JPEG",
+    "class_id": 624,
+    "synset": "n03661043",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03661043_library.JPEG",
+    "sha256": "2a5af875d8723b59d11c31c2db4ff4954dcab32d06b95de5c349a896911b7b1e"
+  },
+  {
+    "filename": "n03666591_lighter.JPEG",
+    "class_id": 626,
+    "synset": "n03666591",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03666591_lighter.JPEG",
+    "sha256": "e6bb863da9d792755c8a3867b253300fc2b4727c8bcb943d3a47471a38098a33"
+  },
+  {
+    "filename": "n03720891_maraca.JPEG",
+    "class_id": 641,
+    "synset": "n03720891",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03720891_maraca.JPEG",
+    "sha256": "7c4fc7c4b7f88d76842a1b3e715a338f164bd6443204133d1efe301fccd24eb7"
+  },
+  {
+    "filename": "n03761084_microwave.JPEG",
+    "class_id": 651,
+    "synset": "n03761084",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03761084_microwave.JPEG",
+    "sha256": "9ae2323202f948ff5129f23a3684e5e8c07848abe9c3e7515ab89c16a5aaa80b"
+  },
+  {
+    "filename": "n03777754_modem.JPEG",
+    "class_id": 662,
+    "synset": "n03777754",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03777754_modem.JPEG",
+    "sha256": "dce9f4e6602f98712bc8fa01bc27e2a9165c803d47939f6b1414305bbb3b4dad"
+  },
+  {
+    "filename": "n03793489_mouse.JPEG",
+    "class_id": 673,
+    "synset": "n03793489",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03793489_mouse.JPEG",
+    "sha256": "a9a32d0157c0084c445ef12bb325b18be89d347e465729602c60ad3c127d428d"
+  },
+  {
+    "filename": "n03841143_odometer.JPEG",
+    "class_id": 685,
+    "synset": "n03841143",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03841143_odometer.JPEG",
+    "sha256": "e67053fed52d27e74102d2c842d929f1663fd635a95856aa7cad9312aa753775"
+  },
+  {
+    "filename": "n03887697_paper_towel.JPEG",
+    "class_id": 700,
+    "synset": "n03887697",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03887697_paper_towel.JPEG",
+    "sha256": "dc7edfb3367a479026537048405b6808228e0082068e27e05532ca32da2b237f"
+  },
+  {
+    "filename": "n03942813_ping-pong_ball.JPEG",
+    "class_id": 722,
+    "synset": "n03942813",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03942813_ping-pong_ball.JPEG",
+    "sha256": "23ab0f2718e03d45fbad05cfaad9a786aae25720f08013851ef1eb3dc4950057"
+  },
+  {
+    "filename": "n03954731_plane.JPEG",
+    "class_id": 726,
+    "synset": "n03954731",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03954731_plane.JPEG",
+    "sha256": "386a281964b47a2d9c1cd39f94c718681805e6839d92709faa26318565606402"
+  },
+  {
+    "filename": "n03961711_plate_rack.JPEG",
+    "class_id": 729,
+    "synset": "n03961711",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03961711_plate_rack.JPEG",
+    "sha256": "243ad26521adcf3dcce7b877878820ec71d4f5d4a42371b304e734d5a79e7a8b"
+  },
+  {
+    "filename": "n03998194_prayer_rug.JPEG",
+    "class_id": 741,
+    "synset": "n03998194",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n03998194_prayer_rug.JPEG",
+    "sha256": "1621ceb164cc28f5277071b257380b4602d8be78df6e3ef506837c9db13f35c6"
+  },
+  {
+    "filename": "n04044716_radio_telescope.JPEG",
+    "class_id": 755,
+    "synset": "n04044716",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04044716_radio_telescope.JPEG",
+    "sha256": "a4606169745fe242e74be25f6775c97e0d8569ebaeee637f0adb78d8a65ad6c9"
+  },
+  {
+    "filename": "n04081281_restaurant.JPEG",
+    "class_id": 762,
+    "synset": "n04081281",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04081281_restaurant.JPEG",
+    "sha256": "852964516c07bef7b40ee303da21d71037810ab199a7264529b78f46319ee883"
+  },
+  {
+    "filename": "n04111531_rotisserie.JPEG",
+    "class_id": 766,
+    "synset": "n04111531",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04111531_rotisserie.JPEG",
+    "sha256": "1ffbebf54b89256ed27a7e1b501a12dea1fb5e3262f76733b5a807693bbf56ef"
+  },
+  {
+    "filename": "n04116512_rubber_eraser.JPEG",
+    "class_id": 767,
+    "synset": "n04116512",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04116512_rubber_eraser.JPEG",
+    "sha256": "366a862c61859f9043629b81df5734f60b71b16830b340a33c9b5020d05add7f"
+  },
+  {
+    "filename": "n04162706_seat_belt.JPEG",
+    "class_id": 785,
+    "synset": "n04162706",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04162706_seat_belt.JPEG",
+    "sha256": "dffdfd0a78c6b524b3a60a6a0cf1399cbf082eab5b161cb7f6c22e60c92836e8"
+  },
+  {
+    "filename": "n04201297_shoji.JPEG",
+    "class_id": 789,
+    "synset": "n04201297",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04201297_shoji.JPEG",
+    "sha256": "b88a864c9c0471f00f35ee8c21f999a965faafeff821ed4bf46c3929c5af38fb"
+  },
+  {
+    "filename": "n04239074_sliding_door.JPEG",
+    "class_id": 799,
+    "synset": "n04239074",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04239074_sliding_door.JPEG",
+    "sha256": "02797f0a429e4343d56ffb69afdf93bc9ee1849237ab06bfddba26084fed781b"
+  },
+  {
+    "filename": "n04347754_submarine.JPEG",
+    "class_id": 833,
+    "synset": "n04347754",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04347754_submarine.JPEG",
+    "sha256": "a954a5cf2099f3bc7b6ad2aa928a456fb173acfaf99a7ba5d07bb68e857c196b"
+  },
+  {
+    "filename": "n04350905_suit.JPEG",
+    "class_id": 834,
+    "synset": "n04350905",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04350905_suit.JPEG",
+    "sha256": "05a865cc1724266a97ef7ea0e6471b8b806a3430a6103e9b4958eaf82bfe3aa5"
+  },
+  {
+    "filename": "n04355933_sunglass.JPEG",
+    "class_id": 836,
+    "synset": "n04355933",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04355933_sunglass.JPEG",
+    "sha256": "525ad812d14e0b939c3aaa6e9937d6c07ecdefa388a8093fa6c5b7b52c8a81c7"
+  },
+  {
+    "filename": "n04429376_throne.JPEG",
+    "class_id": 857,
+    "synset": "n04429376",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04429376_throne.JPEG",
+    "sha256": "93ffd4d1203eff19aff8f0a33cbad44a119cadc81b024da453c6f81a98356348"
+  },
+  {
+    "filename": "n04487394_trombone.JPEG",
+    "class_id": 875,
+    "synset": "n04487394",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04487394_trombone.JPEG",
+    "sha256": "27f7d10aa4796341040302cbff9ed5087777c4239a6c1bb76635e4b17ffd24f9"
+  },
+  {
+    "filename": "n04522168_vase.JPEG",
+    "class_id": 883,
+    "synset": "n04522168",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04522168_vase.JPEG",
+    "sha256": "0c03c2bdb7e08cdb6ee654e5e49ca53bd2528691c57329f1e6c97a77d8f115a1"
+  },
+  {
+    "filename": "n04540053_volleyball.JPEG",
+    "class_id": 890,
+    "synset": "n04540053",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04540053_volleyball.JPEG",
+    "sha256": "3141e41cacf98c871610fe733289803f9e86bfa658b940e9953ce860a8bb1d50"
+  },
+  {
+    "filename": "n04552348_warplane.JPEG",
+    "class_id": 895,
+    "synset": "n04552348",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04552348_warplane.JPEG",
+    "sha256": "e7c809760af83933b38c26938d537b92f99aa0e537460c2e5f7e08bc65a23eb1"
+  },
+  {
+    "filename": "n04557648_water_bottle.JPEG",
+    "class_id": 898,
+    "synset": "n04557648",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04557648_water_bottle.JPEG",
+    "sha256": "e7022b762907c8c34004d7f077a889ed3f248632d1ca3dce3e4e38b6004f2ef2"
+  },
+  {
+    "filename": "n04612504_yawl.JPEG",
+    "class_id": 914,
+    "synset": "n04612504",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n04612504_yawl.JPEG",
+    "sha256": "0375463c09e3606f891e31c737664ac57dad4de0a07132e383b1f37fe011cf5d"
+  },
+  {
+    "filename": "n07248320_book_jacket.JPEG",
+    "class_id": 921,
+    "synset": "n07248320",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n07248320_book_jacket.JPEG",
+    "sha256": "cee438d8d748ec0283db47e671b67b76838fde7d6e0863aebbc4b70fa626bdf4"
+  },
+  {
+    "filename": "n07720875_bell_pepper.JPEG",
+    "class_id": 945,
+    "synset": "n07720875",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n07720875_bell_pepper.JPEG",
+    "sha256": "a628d6034d45be04004cf4aaf65fc8d988cc08831164a6aaa904c79cff5c3db5"
+  },
+  {
+    "filename": "n07753275_pineapple.JPEG",
+    "class_id": 953,
+    "synset": "n07753275",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n07753275_pineapple.JPEG",
+    "sha256": "982e50b493c12e3954047bfef97f418fe8bb787a09bb9b16d24df8ed52f35e62"
+  },
+  {
+    "filename": "n07753592_banana.JPEG",
+    "class_id": 954,
+    "synset": "n07753592",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n07753592_banana.JPEG",
+    "sha256": "96c3e9422a5c00da9c9727f0dd13e288d4d966e5236b4a86f64f134ed1ca6cca"
+  },
+  {
+    "filename": "n07875152_potpie.JPEG",
+    "class_id": 964,
+    "synset": "n07875152",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n07875152_potpie.JPEG",
+    "sha256": "604d5a42035ddeb11745df765d4907bde9e08518cb231bce846c8f2e2bdfcc43"
+  },
+  {
+    "filename": "n09428293_seashore.JPEG",
+    "class_id": 978,
+    "synset": "n09428293",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n09428293_seashore.JPEG",
+    "sha256": "8fa6fb58c1f1bad8b99ef52feac3954c7432353fadc1c9757bd4658510df7223"
+  },
+  {
+    "filename": "n10565667_scuba_diver.JPEG",
+    "class_id": 983,
+    "synset": "n10565667",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n10565667_scuba_diver.JPEG",
+    "sha256": "aecd23229fb9115628e7d5f25d35fa3fd4039427ffb983580f8be804a00b7589"
+  },
+  {
+    "filename": "n12057211_yellow_lady's_slipper.JPEG",
+    "class_id": 986,
+    "synset": "n12057211",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n12057211_yellow_lady%27s_slipper.JPEG",
+    "sha256": "52213dde8d2a817751120b90dd4ea4d846c1d509a07a015b48fba6554a2bd866"
+  },
+  {
+    "filename": "n12768682_buckeye.JPEG",
+    "class_id": 990,
+    "synset": "n12768682",
+    "url": "https://raw.githubusercontent.com/EliSchwartz/imagenet-sample-images/bc69043e2862758a1906c6a24a792bb28c6bb2ff/n12768682_buckeye.JPEG",
+    "sha256": "5f28b23de4f87251222ad02e089cc92d44e1c2b614b669cb3d3029f907e9005d"
+  }
+]
