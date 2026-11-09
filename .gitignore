@@ -1,3 +1,7 @@
 .DS_Store
+
 # Large local dataset excluded from published history
 /intro-to-it/third_semestr/first_lab/data/habr_hub_search.json
+
+# Downloaded model cache kept locally
+/neural-networks/semestr_2/lab_2/data/torch/checkpoints/resnet152-f82ba261.pth
