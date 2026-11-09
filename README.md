@@ -37,4 +37,4 @@
 - [RAG, третий семестр](intro-to-it/third_semestr/README.md): подготовка данных и индексов на `home`, запуск Streamlit или Docker. Большие данные и индексы исключены из Git.
 - [Нейронные сети, первый семестр](neural-networks/semestr_1/README.md): ноутбуки, пояснения и готовые отчёты. Работы второго семестра находятся в `neural-networks/semestr_2/`.
 - [Информационная безопасность](it_secur/lab_1/README.md): описание Excel-книги и контрольные результаты.
-- [NoSQL](nosql/README.md): лабораторные с Docker; [Java](java/README.md): JDK 21 и Maven.
+- [NoSQL](nosql/README.md): Redis в Docker и реализации кэша, WAL и SSTable; [Java](java/README.md): JDK 23 и Maven.

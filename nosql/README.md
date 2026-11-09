@@ -30,16 +30,27 @@ docker compose up -d      # запустить Redis 7 на localhost:6379
 
 Подробнее: [lab_1_redis/README.md](lab_1_redis/README.md)
 
+### Лабораторная 2 — кэш
+
+`lab_2_cache/` содержит ноутбук с проверками класса `Cache`, реализацию `cache.py`, постановку и пояснение.
+
+### Лабораторная 3 — WAL
+
+`lab_3_wal/` содержит ноутбук, реализацию WAL-кэша `wal_cache.py`, постановку и пояснение.
+
+### Лабораторная 4 — SSTable
+
+`lab_4_sstable/` содержит ноутбук, реализацию `sstable.py`, файл данных `data.sst`, постановку и пояснение.
+
 ---
 
 ## Структура репозитория
 
 ```
 nosql/
-├── environment.yml       # conda/mamba окружение
-├── README.md             # этот файл
-└── lab_1_redis/
-    ├── docker-compose.yml
-    ├── main.ipynb
-    └── README.md
+├── environment.yml
+├── lab_1_redis/
+├── lab_2_cache/
+├── lab_3_wal/
+└── lab_4_sstable/
 ```

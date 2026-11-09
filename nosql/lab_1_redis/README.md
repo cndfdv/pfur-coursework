@@ -13,7 +13,7 @@ Redis будет доступен на `localhost:6379`. Остановить: `
 
 ### 2. Запустить ноутбук
 
-Открыть [main.ipynb](main.ipynb) в VS Code, выбрать ядро **Python (nosql)**, выполнить ячейки по порядку.
+Откройте [main.ipynb](main.ipynb) в Jupyter или VS Code и выполните ячейки по порядку. Ноутбук использует пакет `redis`; окружение `nosql` с ним описано в [`../environment.yml`](../environment.yml).
 
 ---
 

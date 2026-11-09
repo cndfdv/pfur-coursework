@@ -18,12 +18,12 @@ flowchart LR
 План работы: подготовить индексы, запустить интерфейс, сравнить обычный и
 составной вопросы, объяснить маршруты и проверить стоимость серии запросов.
 
-Из корня проекта, в окружении `main`:
+Сначала установите зависимости и загрузите данные по [общей инструкции](../README.md).
+Из каталога `intro-to-it/third_semestr`, в окружении `main`:
 
 ```bash
 mamba run -n main python -m scripts.build_indexes
 mamba run -n main streamlit run lab_4_costs/app.py
-mamba run -n main python -m compileall -q lab_4_costs
 ```
 
 Для генерации задайте `OPENAI_API_KEY` в окружении или боковой панели. Общий

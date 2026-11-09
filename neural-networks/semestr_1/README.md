@@ -7,7 +7,7 @@
 
 - `lab_1` — `lab_6/` — отдельные лабораторные;
 - `main.ipynb` в каждом каталоге — исходный ноутбук;
-- `explanation.md` и `comments.md` — пояснения к работе;
+- `explanation.md` — пояснение к работе, `comments.md` есть не во всех каталогах;
 - `report_lab*.pdf` и `report_lab*.docx` — готовые отчёты;
 - `figures/` — сохранённые графики и схемы.
 

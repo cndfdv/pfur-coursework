@@ -1,6 +1,7 @@
 # ArXiv Semantic Search
 
-Полнофункциональный semantic search по статьям arXiv на четырёх NoSQL БД.
+Учебный семантический поиск на четырёх NoSQL БД. По умолчанию загружаются
+сгенерированные демо-статьи; реальные записи arXiv можно импортировать отдельно.
 
 **Стек:** Qdrant (векторы) · Redis (кэш) · ClickHouse (аналитика) · MongoDB (метаданные) · FastAPI · React/Vite · `sentence-transformers` (`all-MiniLM-L6-v2`).
 
@@ -14,14 +15,14 @@ docker compose up --build
 
 Compose поднимет:
 
-1. Четыре БД (Qdrant, Redis, ClickHouse, Mongo) с healthcheck'ами
-2. **Loader** — one-shot сервис, который дожидается БД, скачивает модель, генерирует 500 демо-статей через Faker и заливает в Mongo + Qdrant. Если данные уже загружены — skip.
+1. Четыре БД (Qdrant, Redis, ClickHouse, Mongo). В Compose healthcheck настроен для Redis, ClickHouse и Mongo; для Qdrant healthcheck не задан.
+2. **Loader** — one-shot сервис, который загружает модель и генерирует 500 демо-статей через Faker для MongoDB и Qdrant. Если в Qdrant уже есть точки, загрузчик пропускает импорт.
 3. **Backend** (FastAPI) на http://localhost:8000 (ждёт, пока loader завершится успешно)
 4. **Frontend** (Vite dev) на http://localhost:5173
 
-Первый запуск займёт ~2–5 минут: сборка образов + скачивание модели `all-MiniLM-L6-v2` (~90 MB, кэшируется в volume `hf_cache`).
+Первый запуск собирает образы и скачивает модель `all-MiniLM-L6-v2` в volume `hf_cache`.
 
-**Повторные `docker compose up`** стартуют мгновенно: loader видит непустой Qdrant и выходит, модель уже в кэше.
+При повторном запуске с сохранёнными volumes загрузчик пропустит импорт при непустом Qdrant. Backend всё равно загружает модель при старте.
 
 ### Настроить объём демо-данных
 
@@ -29,7 +30,12 @@ Compose поднимет:
 LOAD_COUNT=2000 docker compose up --build
 ```
 
-### Загрузить реальный датасет arXiv вместо fake
+### Загрузить реальные записи arXiv
+
+Загрузчик принимает JSON Lines (один JSON-объект на строку), а не JSON-массив.
+Сначала запустите Compose и дождитесь готовности backend. Затем поместите файл
+в контейнер и запустите загрузчик с `--force`, чтобы выполнить импорт даже при
+непустом Qdrant:
 
 ```bash
 # 1. Поднять всё как обычно (с fake)
@@ -74,7 +80,7 @@ Swagger: http://localhost:8000/docs
 ## Как работает поиск
 
 1. Приходит `GET /api/search?q=...`
-2. Проверяется Redis (ключ `search:{lowercased_query}`, TTL 1ч)
+2. Проверяется Redis (ключ `search:{нормализованный_запрос}`, пробелы сводятся к одному, регистр приводится к нижнему; TTL 1 ч)
 3. При промахе — текст эмбеддится в 384-мерный вектор и ищется top-K в Qdrant
 4. По найденным `arxiv_id` достаются метаданные из MongoDB
 5. Результат пишется в Redis и логируется строкой в ClickHouse (`search_logs`)
@@ -118,38 +124,18 @@ Swagger: http://localhost:8000/docs
 
 ---
 
-## Локальная разработка без Docker (опционально)
-
-Если нужно дебажить бэк без пересборки образа:
-
-```bash
-# БД — всё ещё из compose
-docker compose up -d qdrant redis clickhouse mongo
-
-# Бэк локально
-cd backend
-pip install -r requirements.txt
-python scripts/load_data.py --fake 500
-uvicorn main:app --reload --port 8000
-
-# Фронт локально
-cd frontend
-npm install
-npm run dev
-```
-
----
-
 ## Сервисы и порты
 
 | Сервис     | Порт          |
 |------------|---------------|
 | Frontend   | 5173          |
 | Backend    | 8000          |
-| Qdrant     | 6333          |
-| Redis      | 6379          |
-| ClickHouse | 8123, 9000    |
-| MongoDB    | 27017         |
+| Qdrant     | 6333 (внутри сети Compose) |
+| Redis      | 6379 (внутри сети Compose) |
+| ClickHouse | 8123, 9000 (внутри сети Compose) |
+| MongoDB    | 27017 (внутри сети Compose) |
+
+На хост проброшены порты Frontend `5173` и Backend `8000`; порты баз данных в Compose не опубликованы.
 
 ---
 

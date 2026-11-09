@@ -1,6 +1,6 @@
 # Лабораторная работа 7: Git
 
-Задание из `AIF_programming_practice/labs/lab7_git.md` выполняется в интерактивном тренажёре:
+Работа выполняется в интерактивном тренажёре:
 
 https://learngitbranching.js.org/
 
