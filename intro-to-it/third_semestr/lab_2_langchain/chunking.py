@@ -1,6 +1,9 @@
 """Потоковое чтение выгрузки Хабра, очистка HTML и рекурсивный чанкинг."""
 
+import bz2
+import csv
 import hashlib
+import os
 import re
 from pathlib import Path
 
@@ -9,12 +12,38 @@ from bs4 import BeautifulSoup
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-DATA_PATH = Path(__file__).parent / "data" / "habr_hub_search.json"
+csv.field_size_limit(10_000_000)
 
 
-def iter_articles(path=DATA_PATH):
-    """Читать {hub: [article, ...]} по одной статье, не загружая весь JSON."""
-    with Path(path).open("rb") as file:
+def find_data_path() -> Path:
+    """Найти выгрузку локально, в общей папке курса или в Docker."""
+    configured = os.getenv("RAG_DATA_PATH")
+    candidates = [
+        Path(configured) if configured else None,
+        Path(__file__).parents[1] / "data" / "raw" / "habr" / "dataset.json",
+        Path(__file__).parent / "data" / "habr_hub_search.json",
+        Path(__file__).parent / "data" / "dataset.json",
+    ]
+    for folder in (
+        Path(__file__).parents[1] / "data" / "raw" / "habr",
+        Path(__file__).parent / "data",
+    ):
+        candidates.extend(sorted(folder.glob("*.bz2")))
+    for candidate in candidates:
+        if candidate and candidate.is_file():
+            return candidate
+    raise FileNotFoundError("Сначала выполните scripts/download_data.py")
+
+
+def iter_articles(path=None):
+    """Читать Light CSV.bz2 или исходный {hub: [article, ...]} по одной статье."""
+    path = Path(path or find_data_path())
+    if path.suffix == ".bz2":
+        with bz2.open(path, "rt", encoding="utf-8") as file:
+            for article in csv.DictReader(file):
+                yield article.get("post_hubs", ""), article
+        return
+    with path.open("rb") as file:
         events = ijson.parse(file)
         for prefix, event, value in events:
             if prefix.count(".") == 1 and prefix.endswith(".item") and event == "start_map":
@@ -41,7 +70,7 @@ def clean_html(value):
     return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
-def load_documents(path=DATA_PATH, limit=500):
+def load_documents(path=None, limit=None):
     """Взять первые limit уникальных непустых статей; None — весь файл."""
     if limit is not None and limit < 1:
         raise ValueError("Лимит должен быть положительным или None.")
@@ -49,12 +78,12 @@ def load_documents(path=DATA_PATH, limit=500):
     stats = dict(scanned=0, duplicates=0, empty=0, lead_only=0)
     for hub, article in iter_articles(path):
         stats["scanned"] += 1
-        article_id = str(article.get("id") or "")
+        article_id = str(article.get("post_id") or article.get("id") or "")
         if article_id and article_id in seen_ids:
             stats["duplicates"] += 1
             continue
-        title = clean_html(article.get("titleHtml"))
-        body = clean_html(article.get("textHtml"))
+        title = clean_html(article.get("post_title") or article.get("titleHtml"))
+        body = clean_html(article.get("post_html") or article.get("textHtml"))
         lead_only = not body
         if lead_only:
             body = clean_html((article.get("leadData") or {}).get("textHtml"))
@@ -69,14 +98,19 @@ def load_documents(path=DATA_PATH, limit=500):
         seen_ids.add(article_id)
         seen_texts.add(digest)
         stats["lead_only"] += int(lead_only)
-        documents.append(Document(page_content=text, metadata={
-            "article_id": article_id or digest,
-            "title": title or "Без заголовка",
-            "source": f"https://habr.com/ru/articles/{article_id}/" if article_id else "",
-            "hub": hub,
-            "date": article.get("timePublished") or "",
-            "lead_only": lead_only,
-        }))
+        documents.append(
+            Document(
+                page_content=text,
+                metadata={
+                    "article_id": article_id or digest,
+                    "title": title or "Без заголовка",
+                    "source": f"https://habr.com/ru/articles/{article_id}/" if article_id else "",
+                    "hub": hub,
+                    "date": article.get("post_publish_date") or article.get("timePublished") or "",
+                    "lead_only": lead_only,
+                },
+            )
+        )
         if limit is not None and len(documents) >= limit:
             break
     if not documents:
@@ -90,7 +124,9 @@ def split_documents(documents, chunk_size=1000, chunk_overlap=150):
     if not 0 <= chunk_overlap < chunk_size:
         raise ValueError("Нужно 0 <= chunk_overlap < chunk_size.")
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=chunk_size, chunk_overlap=chunk_overlap, add_start_index=True,
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
+        add_start_index=True,
     )
     chunks = splitter.split_documents(documents)
     for index, chunk in enumerate(chunks):

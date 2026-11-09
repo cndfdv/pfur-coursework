@@ -1,0 +1,23 @@
+services:
+  rag:
+    build: .
+    ports:
+      - "127.0.0.1:8501:8501"
+    env_file:
+      - path: ../.env
+        required: false
+    environment:
+      RAG_INDEX_PATH: /app/index
+    volumes:
+      - ../data/raw/habr:/app/data:ro
+      - ../data/indexes/habr:/app/index:ro
+      - model-cache:/app/.cache/huggingface
+
+volumes:
+  model-cache:
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: ${RAG_LAB2_SUBNET:-10.250.249.0/28}

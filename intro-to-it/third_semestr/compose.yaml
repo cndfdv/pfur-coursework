@@ -1,0 +1,18 @@
+services:
+  rag:
+    build: .
+    ports:
+      - "127.0.0.1:8501:8501"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./data:/app/data
+    # Для отдельной защиты замените путь на lab_3_langgraph/app.py или lab_4_costs/app.py.
+    command: streamlit run lab_5_security/app.py --server.address=0.0.0.0 --server.port=8501
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: ${RAG_SUBNET:-10.250.248.0/28}
