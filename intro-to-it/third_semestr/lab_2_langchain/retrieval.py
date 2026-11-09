@@ -3,6 +3,7 @@
 import re
 from collections import defaultdict
 
+import torch
 from langchain_community.retrievers import BM25Retriever
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -15,14 +16,16 @@ def tokenize(text):
 
 
 def build_indexes(chunks):
-    """Построить оба индекса на одних чанках. Модель работает локально на CPU."""
+    """Построить оба индекса на одних чанках."""
     if not chunks:
         raise ValueError("Нет чанков для индексации.")
     embeddings = HuggingFaceEmbeddings(
         model_name=MODEL_NAME,
-        model_kwargs={"device": "cpu"},
+        model_kwargs={"device": "cuda" if torch.cuda.is_available() else "cpu"},
         encode_kwargs={
-            "normalize_embeddings": True, "prompt_name": "search_document", "batch_size": 16,
+            "normalize_embeddings": True,
+            "prompt_name": "search_document",
+            "batch_size": 16,
         },
         query_encode_kwargs={"normalize_embeddings": True, "prompt_name": "search_query"},
     )
@@ -39,8 +42,11 @@ def retrieve(question, vector_store, bm25, k=10):
         raise ValueError("k должен быть положительным.")
     dense = vector_store.similarity_search(question, k=max(20, k))
     query_tokens = set(tokenize(question))
-    sparse = [doc for doc in bm25.invoke(question)
-            if query_tokens.intersection(tokenize(doc.page_content))]
+    sparse = [
+        doc
+        for doc in bm25.invoke(question)
+        if query_tokens.intersection(tokenize(doc.page_content))
+    ]
     scores, documents = defaultdict(float), {}
     for ranking in (dense, sparse):
         for rank, doc in enumerate(ranking, start=1):

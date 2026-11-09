@@ -1,6 +1,6 @@
 *
 !requirements.txt
 !chunking.py
-!retrival.py
+!retrieval.py
 !llm.py
 !app.py

@@ -10,3 +10,4 @@ rank-bm25==0.2.2
 beautifulsoup4>=4.12,<5
 ijson>=3.3,<4
 streamlit>=1.45,<2
+python-dotenv>=1,<2
