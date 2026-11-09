@@ -50,9 +50,16 @@ def show_dashboard(rows):
     middle.metric("Стоимость серии", f"${frame.cost_usd.sum():.6f}")
     right.metric("Время серии", f"{frame.seconds.sum():.2f} с")
     st.subheader("По запросам")
-    st.dataframe(frame.groupby("request", sort=False).sum(numeric_only=True), width="stretch")
+    metrics = ["seconds", "input_tokens", "output_tokens", "cached_tokens", "cost_usd"]
+    columns = {
+        "cost_usd": st.column_config.NumberColumn("USD", format="$%.8f"),
+        "seconds": st.column_config.NumberColumn("Секунды", format="%.3f"),
+    }
+    st.dataframe(
+        frame.groupby("request", sort=False)[metrics].sum(), column_config=columns, width="stretch"
+    )
     st.subheader("Каждый этап")
-    st.dataframe(frame, hide_index=True, width="stretch")
+    st.dataframe(frame, hide_index=True, column_config=columns, width="stretch")
     st.download_button("Скачать CSV", frame.to_csv(index=False), "costs.csv", "text/csv")
     st.caption(
         "Локальный поиск и обработка имеют нулевую цену API. Электроэнергия GPU и интернет не учтены. Без ключа токены и цена равны нулю."

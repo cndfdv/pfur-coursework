@@ -70,7 +70,7 @@ def clean_html(value):
     return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
-def load_documents(path=None, limit=500):
+def load_documents(path=None, limit=None):
     """Взять первые limit уникальных непустых статей; None — весь файл."""
     if limit is not None and limit < 1:
         raise ValueError("Лимит должен быть положительным или None.")

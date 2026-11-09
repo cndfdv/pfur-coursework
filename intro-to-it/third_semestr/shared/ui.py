@@ -49,20 +49,31 @@ def sidebar():
         st.caption("GPT-6 Luna · medium effort. Без ключа доступен поиск и разбор шагов.")
         st.divider()
         st.caption(
-            "Источники: Хабр, научные статьи и новости. По 10 000 документов в каждом индексе."
+            "Light-наборы: Хабр, научные статьи и новости. До 10 000 непустых уникальных документов на источник."
         )
     return key
 
 
-@st.cache_resource(show_spinner="Загрузка индексов…")
+@st.cache_resource(show_spinner=False)
 def load_indexes():
+    sources = ("habr", "science", "news")
+    missing = [source for source in sources if not (INDEX_DIR / source / "index.faiss").is_file()]
+    if missing:
+        st.info(
+            "Ещё не готовы индексы: "
+            + ", ".join(missing)
+            + ". Выполните `python -m scripts.build_indexes` на home и обновите страницу."
+        )
+        st.stop()
     try:
-        return {source: IndexStore(INDEX_DIR / source) for source in ("habr", "science", "news")}
+        return {source: IndexStore(INDEX_DIR / source) for source in sources}
     except FileNotFoundError:
         st.error("Данные ещё не подготовлены. Выполните `python -m scripts.build_indexes` на home.")
         st.stop()
-    except RuntimeError as error:
-        st.error(f"Не удалось прочитать FAISS-индекс: {error}")
+    except RuntimeError:
+        st.error(
+            "Не удалось прочитать FAISS-индекс. Пересоберите его командой `python -m scripts.build_indexes`."
+        )
         st.stop()
 
 

@@ -8,7 +8,8 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 COPY requirements.txt .
-RUN pip install torch --index-url https://download.pytorch.org/whl/cpu \
+RUN pip install --upgrade pip \
+    && pip install torch==2.10.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu \
     && pip install -r requirements.txt
 COPY chunking.py retrieval.py llm.py app.py ./
 EXPOSE 8501

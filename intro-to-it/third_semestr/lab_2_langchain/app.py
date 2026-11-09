@@ -8,7 +8,7 @@ from chunking import load_documents, split_documents
 from llm import answer_question
 from retrieval import build_indexes, retrieve
 
-ARTICLE_LIMIT = 500  # Сколько уникальных статей загрузить в базу; None — все.
+ARTICLE_LIMIT = None  # Все непустые уникальные статьи доступного файла.
 TOP_K = 10  # Сколько найденных чанков передать LLM.
 
 

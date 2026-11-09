@@ -1,0 +1,9 @@
+.env
+.git
+**/.venv
+**/.mamba
+**/__pycache__
+data
+materials
+.plans
+**/*.ipynb

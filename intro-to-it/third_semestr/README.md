@@ -48,8 +48,43 @@ cd ~/pfur-coursework/intro-to-it/third_semestr
 ~/miniforge3/bin/mamba run -n main streamlit run lab_5_security/app.py
 ```
 
-Lab 5 содержит все возможности предыдущих работ. Для защиты отдельной темы
-запускайте `app.py` из соответствующей папки.
+Lab 5 использует граф Lab 3 и обработку вопросов/стоимости Lab 4. Гибридный
+BM25 + FAISS показан отдельно в Lab 2. Для защиты темы запускайте её `app.py`.
+
+## Docker
+
+После подготовки данных и индексов на `home`:
+
+```bash
+docker compose up --build -d
+docker compose logs -f rag
+docker compose down
+```
+
+По умолчанию запускается лабораторная 5. Путь к другой работе меняется в `command`
+файла `compose.yaml`. В контейнере запросы кодируются на CPU; тяжёлые индексы уже
+подготовлены на GPU. Данные подключены томом, ключ передаётся из `.env` при запуске.
+Для открытия удалённого интерфейса на своём компьютере:
+
+```bash
+ssh -N -L 8501:127.0.0.1:8501 home
+```
+
+Затем откройте http://localhost:8501. Сервер слушает localhost через Docker;
+при обычном запуске Streamlit добавьте `--server.address=127.0.0.1`.
+
+На текущем `home` системный Docker credential helper ссылается на отсутствующий
+Windows-файл. Сборка проверена с временной пустой конфигурацией, без изменения
+глобальных настроек:
+
+```bash
+task_docker_config=$(mktemp -d)
+DOCKER_CONFIG="$task_docker_config" docker compose up --build -d
+```
+
+Автоматический пул Docker-подсетей на `home` исчерпан, поэтому Compose явно
+использует свободную на момент проверки `10.250.248.0/28`. При конфликте задайте
+`RAG_SUBNET` другой свободной подсетью. Чужие сети не удаляются.
 
 ## Настройки API
 
@@ -76,3 +111,8 @@ OPENAI_API_KEY=ваш_ключ
 ## План работ
 
 Подробный план: [`.plans/PLAN_course_labs.md`](.plans/PLAN_course_labs.md).
+
+Сценарий защиты и объяснение решений: [`DEFENSE.md`](DEFENSE.md).
+Результаты проверок и статистика наборов: [`VERIFICATION.md`](VERIFICATION.md).
+Первая RAG-лаба теперь работает на всём доступном Хабре; отдельная оценка поиска
+и ответов описана в [`lab_2_langchain/QUALITY.md`](lab_2_langchain/QUALITY.md).
